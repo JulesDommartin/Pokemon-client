@@ -1,0 +1,13 @@
+<header class="header">
+
+</header>
+<div>
+  <ul class="sidebar-menu">
+    <li ng-repeat="item in menuoptions" ui-sref-active="active" class="{{item.class}}">
+      <a href="" ui-sref="{{item.sref}}"><i class="fa fa-fw {{item.icon}}"></i> {{item.name}}</a>
+    </li>
+  </ul>
+  <div ui-view class="content">
+
+  </div>
+</div>
