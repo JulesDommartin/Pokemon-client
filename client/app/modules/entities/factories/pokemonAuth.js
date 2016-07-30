@@ -42,7 +42,7 @@
     return {
       request: function($config) {
         if (PokemonAuth.accessToken) {
-          $config.headers.Authorization = "Bearer " + PokemonAuth.accessToken;
+          $config.headers.authorization = "Bearer " + PokemonAuth.accessToken;
         } else {
           console.log("No auth");
         }

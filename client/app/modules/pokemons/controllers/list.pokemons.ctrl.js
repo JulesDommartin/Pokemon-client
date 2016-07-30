@@ -4,9 +4,11 @@
 
   angular
     .module('com.module.pokemons')
-    .controller('ListPokemonsCtrl', function ($cookies, pokemons, PokemonService) {
+    .controller('ListPokemonsCtrl', function ($cookies, pokemons, PokemonService, AppAuth, PokemonAuth) {
 
-      // $cookies.remove('current_id');
+      AppAuth.login();
+
+      console.log(PokemonAuth.accessToken);
 
       if ($cookies.get('current_id') === undefined) {
         this.currentId = 1;
@@ -90,19 +92,18 @@
         });
       };
 
-      this.chercherPokemonSuivant = function (id) {
-        console.log("On cherche : " + id);
-        this.findFromAPI(id);
-        $cookies.remove('current_id');
-        var nextId = parseInt(id) + 1;
-        $cookies.put('current_id', nextId);
-        setTimeout(() => { location.reload(); }, 7000);
-      };
+      // this.chercherPokemonSuivant = function (id) {
+      //   console.log("On cherche : " + id);
+      //   this.findFromAPI(id);
+      //   $cookies.remove('current_id');
+      //   var nextId = parseInt(id) + 1;
+      //   $cookies.put('current_id', nextId);
+      //   setTimeout(() => { location.reload(); }, 7000);
+      // };
 
       // if (this.currentId <= 151) {
       //   this.chercherPokemonSuivant(this.currentId);
       // }
-
 
     });
 
