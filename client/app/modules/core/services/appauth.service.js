@@ -8,7 +8,6 @@
         login: function (data) {
           return $q((res, err) => {
             if (PokemonAuth.getToken()) {
-              console.log(PokemonAuth.accessToken);
               User.me().$promise
               .then(function(user) {
                 self.currentUser = user;
@@ -21,10 +20,8 @@
                   password: data.password
                 }).$promise
                 .then((response) => {
-                  console.log(response);
                   PokemonAuth.setToken(response.token);
-                  if (data.rememberMe)
-                    PokemonAuth.save();
+                  PokemonAuth.save(data.rememberMe);
                   User.me().$promise
                   .then((user) => {
                     self.currentUser = user;

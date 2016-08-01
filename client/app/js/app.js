@@ -10,6 +10,7 @@
       'formly',
       'formlyBootstrap',
       'autofields',
+      'cgNotify',
       'config',
       'com.module.core',
       'com.module.entities',

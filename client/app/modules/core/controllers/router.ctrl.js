@@ -2,7 +2,7 @@
   'use strict';
   angular
     .module('com.module.core')
-    .controller('RouteCtrl', function () {
+    .controller('RouteCtrl', function (AppAuth, $state) {
 
       AppAuth.login({})
         .then(function (user) {

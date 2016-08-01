@@ -18,6 +18,7 @@
 
       $rootScope.addMenu('Home', 'app.home', 'fa-home');
 
+
     });
 
 })();
