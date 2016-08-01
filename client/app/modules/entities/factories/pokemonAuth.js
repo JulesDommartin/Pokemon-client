@@ -19,15 +19,12 @@
 
     PokemonAuth.prototype.getToken = function() {
       this.accessToken = $cookies.get('access_token');
-      return this.accessToken !== null;
+      return this.accessToken !== undefined;
     };
 
-    PokemonAuth.prototype.save = function(ttl) {
-      if (this.accessToken !== null) {
-        if(ttl)
-          $cookies.put('access_token', this.accessToken, { domain: URLService.domain(), end: ttl });
-        else
-          $cookies.put('access_token', this.accessToken, { domain: URLService.domain() });
+    PokemonAuth.prototype.save = function() {
+      if (this.accessToken !== undefined) {
+        $cookies.put('access_token', this.accessToken);
       } else
         return false;
     };
@@ -46,7 +43,7 @@
         } else {
           console.log("No auth");
         }
-        return $config;
+        return $config || $q.when($config);
       }
     };
   }]);

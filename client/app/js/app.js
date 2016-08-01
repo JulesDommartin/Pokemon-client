@@ -9,6 +9,7 @@
       'ui.router',
       'formly',
       'formlyBootstrap',
+      'autofields',
       'config',
       'com.module.core',
       'com.module.entities',

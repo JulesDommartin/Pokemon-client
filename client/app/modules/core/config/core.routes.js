@@ -27,7 +27,7 @@
           controller: 'HomeCtrl',
           controllerAs: 'ctrl'
         });
-      $urlRouterProvider.otherwise('/app');
+      $urlRouterProvider.otherwise('/router');
     });
 
 })();

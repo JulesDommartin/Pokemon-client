@@ -6,7 +6,13 @@
     .module('com.module.pokemons')
     .controller('ListPokemonsCtrl', function ($cookies, pokemons, PokemonService, AppAuth, PokemonAuth) {
 
-      AppAuth.login();
+      AppAuth.login()
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
       console.log(PokemonAuth.accessToken);
 

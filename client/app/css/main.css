@@ -3,6 +3,70 @@ body {
   width: 80%;
 }
 
+/* LOGIN PAGE */
+
+#login-box {
+  width: 30%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#login-box .header-container {
+  z-index: 3;
+  background-color: white;
+}
+
+#login-box .header {
+  border: 2px solid black;
+  padding: 20px;
+  background-color: #E02000;
+  border-radius: 100px 100px 0 0;
+  position: relative;
+  z-index: 4;
+}
+
+#login-box .body {
+  padding: 20px;
+  background: #333;
+  position: relative;
+  z-index: 2;
+}
+
+#login-box .footer {
+  padding: 20px;
+  background: #DDD;
+  border-radius: 0 0 100px 100px;
+  border: 2px solid black;
+  position: relative;
+  z-index: 1;
+}
+
+.loading {
+  border-radius: 50px;
+  background-color: #FFF;
+  width: 35px;
+  margin: auto;
+  height: 35px;
+  display: none;
+}
+
+.spinner {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+}
+
+.forgot-password {
+  color: black;
+}
+
+.has-success .control-label,
+.has-success.checkbox label {
+  color: black;
+}
+
+
 .pokemon {
   width: 600px;
   height: 200px;
