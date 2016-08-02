@@ -14,6 +14,7 @@
       'config',
       'com.module.core',
       'com.module.entities',
+      'com.module.moves',
       'com.module.pokemons',
       'com.module.users'
     ])

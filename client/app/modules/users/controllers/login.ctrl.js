@@ -167,6 +167,10 @@
       2000);
     };
 
+    $scope.register = () => {
+      $state.go('register');
+    };
+
   });
 
 })();

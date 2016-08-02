@@ -23,6 +23,9 @@
             },
             pokemons : function (PokemonService) {
               return PokemonService.findAll();
+            },
+            moves : function (MoveService) {
+              return MoveService.findAll();
             }
           }
         });

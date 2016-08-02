@@ -146,7 +146,7 @@ body {
 
 .pokemon {
   width: 600px;
-  height: 200px;
+  height: 350px;
   background-color: #CCCCCC;
   border-radius: 5px;
   padding: 10px;
@@ -181,6 +181,24 @@ body {
   padding: 0px;
 }
 
+.pokemon-moves {
+  width: 60%;
+  height: 40%;
+  top: 45%;
+  left: 40%;
+  position: absolute;
+}
+
+.pokemon-moves table {
+  margin: auto;
+}
+
+.move-stat, .pokemon-moves th {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+}
+
 .stat-bar {
   height: 20px;
   border-radius: 10px;
@@ -188,7 +206,7 @@ body {
 }
 
 .stat-bar-inside {
-  background-color: red;
+  background-color: "#55FF55";
   height: 20px;
   border-radius: 10px;
 }
