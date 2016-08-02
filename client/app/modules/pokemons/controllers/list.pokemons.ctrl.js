@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.pokemons')
-    .controller('ListPokemonsCtrl', function ($cookies, pokemons, PokemonService, AppAuth, PokemonAuth) {
+    .controller('ListPokemonsCtrl', function ($cookies, mesPokemons, pokemons, PokemonService, AppAuth, PokemonAuth) {
 
       if ($cookies.get('current_id') === undefined) {
         this.currentId = 1;
@@ -17,6 +17,8 @@
       };
 
       this.pokemons = pokemons;
+
+      this.mesPokemons = mesPokemons;
 
       this.pokemon = {
         id: null,

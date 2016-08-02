@@ -1,25 +1,25 @@
 <div class="liste">
-  La liste de pokémons se trouve ici. {{ctrl.pokemons.length}} Pokémons.
+  La liste de pokémons se trouve ici. {{ctrl.mesPokemons.length}} Pokémons.
   <div class="pokemons">
-    <div class="pokemon" ng-repeat="pokemon in ctrl.pokemons">
+    <div class="pokemon" ng-repeat="pokemon in ctrl.mesPokemons">
       <p>
         <span>Id : {{pokemon.id}}</span>
       </p>
       <p>
-        <span>Nom : {{pokemon.name}}</span>
+        <span>Nom : {{ctrl.pokemons[pokemon.id - 1].name}}</span>
       </p>
-      <img ng-if="pokemon.sprites.front" ng-src="{{ pokemon.sprites.front }}" alt="{{pokemon.name}}" />
+      <img ng-if="ctrl.pokemons[pokemon.id - 1].sprites.front" ng-src="{{ ctrl.pokemons[pokemon.id - 1].sprites.front }}" alt="{{ctrl.pokemons[pokemon.id - 1].name}}" />
       <div class="pokemon-infos row">
-        <span class="col-md-12">Weight : {{pokemon.weight}}</span>
-        <span class="col-md-12">Height : {{pokemon.height}}</span>
+        <span class="col-md-12">Weight : {{ctrl.pokemons[pokemon.id - 1].weight}}</span>
+        <span class="col-md-12">Height : {{ctrl.pokemons[pokemon.id - 1].height}}</span>
       </div>
       <div class="pokemon-stats row">
-        <span class="stat-label col-md-4">HP</span><div class="stat-bar col-md-5"><div class="stat-hp-bar stat-bar-inside" style="width:{{pokemon.stats[5].base_stat >= 150 ? 100 : pokemon.stats[5].base_stat / 1.5}}%;"></div></div><span class="col-md-1 stat-label">{{ pokemon.stats[5].base_stat }}</span>
-        <span class="stat-label col-md-4">Attaque</span><div class="stat-bar col-md-5"><div class="stat-attack-bar stat-bar-inside" style="width:{{pokemon.stats[4].base_stat >= 150 ? 100 : pokemon.stats[4].base_stat / 1.5}}%;"></div></div><span class="col-md-1 stat-label">{{ pokemon.stats[4].base_stat }}</span>
-        <span class="stat-label col-md-4">Défense</span><div class="stat-bar col-md-5"><div class="stat-defense-bar stat-bar-inside" style="width:{{pokemon.stats[3].base_stat >= 150 ? 100 : pokemon.stats[3].base_stat / 1.5}}%;"></div></div><span class="col-md-1 stat-label">{{ pokemon.stats[3].base_stat }}</span>
-        <span class="stat-label col-md-4">Attaque spé.</span><div class="stat-bar col-md-5"><div class="stat-attackspe-bar stat-bar-inside" style="width:{{pokemon.stats[2].base_stat >= 150 ? 100 : pokemon.stats[2].base_stat / 1.5}}%;"></div></div><span class="col-md-1 stat-label">{{ pokemon.stats[2].base_stat }}</span>
-        <span class="stat-label col-md-4">Défense spé.</span><div class="stat-bar col-md-5"><div class="stat-defensespe-hp-bar stat-bar-inside" style="width:{{pokemon.stats[1].base_stat >= 150 ? 100 : pokemon.stats[1].base_stat / 1.5}}%;"></div></div><span class="col-md-1 stat-label">{{ pokemon.stats[1].base_stat }}</span>
-        <span class="stat-label col-md-4">Vitesse</span><div class="stat-bar col-md-5"><div class="stat-speed-bar stat-bar-inside" style="width:{{pokemon.stats[0].base_stat >= 150 ? 100 : pokemon.stats[0].base_stat / 1.5}}%;"></div></div><span class="col-md-1 stat-label">{{ pokemon.stats[0].base_stat }}</span>
+        <span class="stat-label col-md-3">HP :</span><div class="stat-bar col-md-5"><div class="stat-hp-bar stat-bar-inside" style="width:{{pokemon.hp / pokemon.stats[5].value * 100}}%;"></div></div><span class="col-md-2 stat-label">{{ pokemon.hp }} / {{ pokemon.stats[5].value }}</span>
+        <span class="stat-label col-md-3">Attaque :</span><div class="stat-bar col-md-5"><div class="stat-attack-bar stat-bar-inside" style="width:{{pokemon.stats[4].value >= 150 ? 100 : pokemon.stats[4].value / 1.5}}%;"></div></div><span class="col-md-2 stat-label">{{  pokemon.stats[4].value }}</span>
+        <span class="stat-label col-md-3">Défense :</span><div class="stat-bar col-md-5"><div class="stat-defense-bar stat-bar-inside" style="width:{{pokemon.stats[3].value >= 150 ? 100 : pokemon.stats[3].value / 1.5}}%;"></div></div><span class="col-md-2 stat-label">{{ pokemon.stats[3].value }}</span>
+        <span class="stat-label col-md-3">Attaque spé. :</span><div class="stat-bar col-md-5"><div class="stat-attackspe-bar stat-bar-inside" style="width:{{pokemon.stats[2].value >= 150 ? 100 : pokemon.stats[2].value / 1.5}}%;"></div></div><span class="col-md-2 stat-label">{{ pokemon.stats[2].value }}</span>
+        <span class="stat-label col-md-3">Défense spé. :</span><div class="stat-bar col-md-5"><div class="stat-defensespe-hp-bar stat-bar-inside" style="width:{{pokemon.stats[1].value >= 150 ? 100 : pokemon.stats[1].value / 1.5}}%;"></div></div><span class="col-md-2 stat-label">{{ pokemon.stats[1].value }}</span>
+        <span class="stat-label col-md-3">Vitesse :</span><div class="stat-bar col-md-5"><div class="stat-speed-bar stat-bar-inside" style="width:{{pokemon.stats[0].value >= 150 ? 100 : pokemon.stats[0].value / 1.5}}%;"></div></div><span class="col-md-2 stat-label">{{ pokemon.stats[0].value }}</span>
       </div>
     </div>
   </div>

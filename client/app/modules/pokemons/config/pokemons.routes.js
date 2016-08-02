@@ -18,8 +18,11 @@
           controller: 'ListPokemonsCtrl',
           controllerAs: 'ctrl',
           resolve : {
-            pokemons : function (PokemonService) {
+            mesPokemons : function (PokemonService) {
               return PokemonService.findMine();
+            },
+            pokemons : function (PokemonService) {
+              return PokemonService.findAll();
             }
           }
         });

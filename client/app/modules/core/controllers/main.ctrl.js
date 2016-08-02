@@ -4,7 +4,7 @@
   
   angular
     .module('com.module.core')
-    .controller('MainCtrl', function ($scope, $rootScope, $window, AppAuth, ENV) {
+    .controller('MainCtrl', function ($scope, $rootScope, $location, $state, $window, AppAuth, ENV) {
 
       $scope.menuoptions = $rootScope.menu;
 
