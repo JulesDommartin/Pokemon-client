@@ -6,16 +6,6 @@
     .module('com.module.pokemons')
     .controller('ListPokemonsCtrl', function ($cookies, pokemons, PokemonService, AppAuth, PokemonAuth) {
 
-      AppAuth.login()
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-      console.log(PokemonAuth.accessToken);
-
       if ($cookies.get('current_id') === undefined) {
         this.currentId = 1;
       } else {
@@ -25,8 +15,6 @@
       this.capitalizeFirstLetter = function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       };
-
-      console.log(pokemons);
 
       this.pokemons = pokemons;
 

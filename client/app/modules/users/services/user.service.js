@@ -27,6 +27,10 @@
 				});
 			}
 
+			this.me = function() {
+				return User.me().$promise;
+			}
+
 		});
 
 })();

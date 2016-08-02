@@ -39,7 +39,35 @@
               err("Non connectééé");
             }
           });
+        },
+
+        logout: function (cb) {
+          PokemonAuth.clearToken();
+          if (cb) 
+            cb();
+          self.currentUser = null;
+        },
+
+        getUser: function(cb) {
+          return $q(function(resolve, reject) {
+            if (self.currentUser) resolve(self.currentUser);
+            else {
+              if (PokemonAuth.getToken()) {
+                User.me().$promise
+                .then(function(user) {
+                  self.currentUser = user;
+                  resolve(self.currentUser);
+                })
+                .catch(function(response) {
+                  reject(response);
+                });
+              } else {
+                reject();
+              }
+            }
+          });
         }
+
       };
       return self;
     });

@@ -75,9 +75,6 @@
 
 
     this.closePokeball = () => {
-      // $(".body").effect('drop',{direction:"up"}, 400, () => {
-      //   $(".body").hide();
-      // });
       $('.body').animate({'height':'35px'}, {duration: 400});
       $('#login-box').animate({'width': '18%'}, {duration: 400});
       $('.form').effect('fade', null, 200, () => {
@@ -93,6 +90,7 @@
          $(this).css('visibility','hidden');
         });
       });
+      this.movePokeball();
       this.close = true;
     };
 
@@ -112,8 +110,42 @@
           $(this).css('visibility','visible');
         });
       });
+      var elem = $('#login-box');
+      // this.animateRotate(15, elem);
       this.close = false;
     };
+
+    this.animateRotate = function (d, duration, elem){
+
+      $({deg: 0}).animate({deg: d}, {
+        duration: duration,
+        step: function(now){
+          elem.css({
+            transform: "rotate(" + now + "deg)"
+          });
+        }
+      });
+    }
+
+    this.movePokeball = function() {
+      var elem = $('#login-box');
+      this.animateRotate(15, 200, elem);
+      setTimeout(() => {
+        this.animateRotate(-15, 200, elem);
+      }, 400);
+      setTimeout(() => {
+        this.animateRotate(0, 200, elem);
+      }, 800);
+      setTimeout(() => {
+        this.animateRotate(15, 200, elem);
+      }, 1200);
+      setTimeout(() => {
+        this.animateRotate(-15, 200, elem);
+      }, 1600);
+      setTimeout(() => {
+        this.animateRotate(0, 200, elem);
+      }, 2000);
+    }
 
     $scope.login = () => {
       this.closePokeball();

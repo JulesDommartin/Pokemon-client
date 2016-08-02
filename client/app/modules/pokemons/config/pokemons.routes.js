@@ -19,7 +19,7 @@
           controllerAs: 'ctrl',
           resolve : {
             pokemons : function (PokemonService) {
-              return PokemonService.findAll();
+              return PokemonService.findMine();
             }
           }
         });

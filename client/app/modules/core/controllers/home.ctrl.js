@@ -4,9 +4,9 @@
 
   angular
   .module('com.module.core')
-  .controller('HomeCtrl', function (AppAuth, $cookies) {
-  
-  	console.log($cookies.get('access_token'));
+  .controller('HomeCtrl', function (AppAuth, $cookies, me) {
+
+  	this.currentUser = me;
 
   });
 

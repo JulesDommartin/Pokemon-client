@@ -18,6 +18,10 @@
 
       $rootScope.addMenu('Home', 'app.home', 'fa-home');
 
+      //Routing Debug
+      // $rootScope.$on('$locationChangeStart', function(event, newUrl, oldUrl) {
+      //     console.log('Starting to leave %s to go to %s', oldUrl, newUrl);
+      // });
 
     });
 

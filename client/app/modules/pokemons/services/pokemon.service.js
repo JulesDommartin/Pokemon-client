@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.pokemons')
-    .service('PokemonService', function (Pokemon) {
+    .service('PokemonService', function (Pokemon, PokemonDresseur) {
 
       this.findAll = function () {
         return Pokemon.findAll({}).$promise;
@@ -18,6 +18,10 @@
         return Pokemon.findFromAPI({
           number : number
         }).$promise;
+      };
+
+      this.findMine = function () {
+        return PokemonDresseur.findMine().$promise;
       };
 
     });

@@ -25,7 +25,12 @@
           url: '',
           templateUrl: 'modules/core/views/home.html',
           controller: 'HomeCtrl',
-          controllerAs: 'ctrl'
+          controllerAs: 'ctrl',
+          resolve: {
+            me: function (UserService) {
+              return UserService.me();
+            }
+          }
         });
       $urlRouterProvider.otherwise('/router');
     });

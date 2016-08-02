@@ -1,9 +1,17 @@
-<header class="header">
-
+<header class="header row">
+	<a ui-sref="app.home" class="pull-left"><img alt="Home" class="logo-header" src="../images/mew-logo-mini.png"><img alt="" class="text-header" src="../images/road-to-mew.png"></a>
+	<span class="dropdown btn-dropdown pull-right">
+		<a class="dropdown-toggle" data-toggle="dropdown">
+			<span><i class="fa fa-user" aria-hidden="true"></i> {{currentUser.pseudo}}</span>
+		</a>
+		<ul class="dropdown-menu">
+			<li><a class="btn-logout" ng-click="logout()">Déconnexion</a></li>
+		</ul>
+	</span>
 </header>
-<div>
-  <ul class="sidebar-menu">
-    <li ng-repeat="item in menuoptions" ui-sref-active="active" class="{{item.class}}">
+<div class="row">
+  <ul class="sidebar-menu row">
+    <li ng-repeat="item in menuoptions" ui-sref-active="active" class="{{item.class}} menu-item col-md-3">
       <a href="" ui-sref="{{item.sref}}"><i class="fa fa-fw {{item.icon}}"></i> {{item.name}}</a>
     </li>
   </ul>

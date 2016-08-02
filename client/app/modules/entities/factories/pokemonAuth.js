@@ -19,7 +19,6 @@
 
     PokemonAuth.prototype.getToken = function() {
       this.accessToken = $cookies.get('access_token');
-      console.log(this.accessToken);
       return this.accessToken !== undefined;
     };
 
@@ -30,7 +29,6 @@
         } else {
           var expireDate = new Date();
           expireDate.setDate(expireDate.getDate() + 1);
-          console.log(expireDate);
           $cookies.put('access_token', this.accessToken, {'expires': expireDate, domain: URLService.domain()});
         }
       } else
@@ -46,19 +44,22 @@
   function($q, PokemonAuth) {
     return {
       request: function($config) {
-        if (PokemonAuth.accessToken) {
-          $config.headers.authorization = "Bearer " + PokemonAuth.accessToken;
+        if (!$config.headers.NoAuthInterceptor) {
+          if (PokemonAuth.accessToken) {
+            $config.headers.authorization = "Bearer " + PokemonAuth.accessToken;
+          } else if ($config.__isGetCurrentUser__) {
+            var res = {
+              body: { error: { status: 401 } },
+              status: 401,
+              config: $config,
+              headers: function() { return undefined; }
+            };
+            return $q.reject(res);
+          }
+          return $config || $q.when($config);
         } else {
-          console.log("No auth");
-          var res = {
-            body: { error: { status: 401 } },
-            status: 401,
-            config: $config,
-            headers: function() { return undefined; }
-          };
-          return $q.reject(res);
+          return $config;
         }
-        return $config || $q.when($config);
       }
     };
   }]);
