@@ -61,7 +61,11 @@
         property: 'confirmPassword',
         label: '',
         placeholder: 'Confirme le mot de passe',
-        type: 'password'
+        type: 'password',
+        attr : {
+          confirmPassword : 'user.password',
+          required: true
+        }
       }
     ];
 
@@ -89,6 +93,7 @@
 
     $scope.register = () => {
       console.log($scope.user);
+      UserService.register($scope.user);
     };
 
   });

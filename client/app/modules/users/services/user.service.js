@@ -27,6 +27,10 @@
 				});
 			}
 
+			this.register = function (user) {
+				return User.register(user).$promise;
+			}
+
 			this.me = function() {
 				return User.me().$promise;
 			}

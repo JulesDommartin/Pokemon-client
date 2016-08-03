@@ -31,6 +31,10 @@
           "me": {
             url: urlBase + "/users/me",
             method: "GET"
+          },
+          "register": {
+            url: urlBase + "/users/register",
+            method: "POST"
           }
         }
       );
