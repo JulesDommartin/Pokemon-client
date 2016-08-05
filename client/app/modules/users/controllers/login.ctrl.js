@@ -129,18 +129,18 @@
 
     this.movePokeball = function() {
       var elem = $('#login-box');
-      this.animateRotate(15, 200, elem);
+      this.animateRotate(22, 200, elem);
       setTimeout(() => {
-        this.animateRotate(-15, 200, elem);
+        this.animateRotate(-22, 200, elem);
       }, 400);
       setTimeout(() => {
         this.animateRotate(0, 200, elem);
       }, 800);
       setTimeout(() => {
-        this.animateRotate(15, 200, elem);
+        this.animateRotate(22, 200, elem);
       }, 1200);
       setTimeout(() => {
-        this.animateRotate(-15, 200, elem);
+        this.animateRotate(-22, 200, elem);
       }, 1600);
       setTimeout(() => {
         this.animateRotate(0, 200, elem);

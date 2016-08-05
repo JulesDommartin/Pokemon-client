@@ -20,8 +20,8 @@
             url: urlBase + "/users",
             method: "GET"
           },
-          "findExistant": {
-            url: urlBase + "/users/:pseudo",
+          "findExistantPseudo": {
+            url: ServerService.url() + "/public/users/exist/:pseudo",
             method: "GET",
           },
           "create": {
@@ -33,7 +33,7 @@
             method: "GET"
           },
           "register": {
-            url: urlBase + "/users/register",
+            url: ServerService.url() + "/public/users",
             method: "POST"
           }
         }

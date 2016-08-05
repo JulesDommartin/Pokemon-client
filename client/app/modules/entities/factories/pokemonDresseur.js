@@ -19,7 +19,7 @@
             method: "GET"
           },
           "findById": {
-            url: urlBase + "/pokemonsdresseur/:id",
+            url: urlBase + "/pokemonsdresseur/find/:id",
             method: "GET",
           },
           "findMine": {

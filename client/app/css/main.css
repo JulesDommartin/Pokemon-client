@@ -9,6 +9,20 @@ body {
   border-color: #faebcc;
 }
 
+div.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.white {
+  color: white;
+}
+
+
 /* HEADER */
 
 .header {
@@ -70,6 +84,11 @@ body {
   text-decoration: none;
 }
 
+#validRegistration {
+  margin-top: 10px;
+}
+
+
 /* CONTENT */
 
 .content {
@@ -100,7 +119,7 @@ body {
   background-color: #FF4136;
   border-radius: 100px 100px 0 0;
   position: relative;
-  z-index: 4;
+  z-index: 1;
 }
 
 #login-box .body {
@@ -145,7 +164,7 @@ body {
 
 
 .pokemon {
-  width: 600px;
+  width: 50%;
   height: 350px;
   background-color: #CCCCCC;
   border-radius: 5px;

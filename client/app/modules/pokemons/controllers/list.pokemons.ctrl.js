@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.pokemons')
-    .controller('ListPokemonsCtrl', function ($cookies, mesPokemons, pokemons, moves, PokemonService, AppAuth, PokemonAuth) {
+    .controller('ListPokemonsCtrl', function ($cookies, me, pokemons, moves, PokemonService, AppAuth, PokemonAuth) {
 
       if ($cookies.get('current_id') === undefined) {
         this.currentId = 1;
@@ -18,24 +18,64 @@
 
       this.pokemons = pokemons;
       this.moves = moves;
+      this.me = me;
 
-      this.mesPokemons = mesPokemons;
+      this.sortBy = function (field, reverse, primer) {
+        var key = primer ?
+          function(x) { return primer(x[field]); } :
+          function(x) { return x[field]; };
+
+        reverse = !reverse ? 1 : -1;
+
+        return function(a, b) {
+          return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+        }
+      };
+
+      this.getPokemonFromList = function (id, pos) {
+        var pokemon;
+        for (var i = 0; i < this.me.listePokemons.length; i++) {
+          if (this.me.listePokemons[i]._id == id) {
+            pokemon = this.me.listePokemons[i];
+            break;
+          }
+        };
+        return pokemon;
+      };
+
+      this.constructPokemonTeam = function () {
+        var team = [];
+
+        this.me.equipePokemons.sort(this.sortBy('position', false, parseInt));
+
+        for (var i = 0; i < this.me.equipePokemons.length; i++) {
+          var pokemon = this.getPokemonFromList(this.me.equipePokemons[i].pokemon, this.me.equipePokemons[i].position);
+          team.push(pokemon);
+        }
+
+        this.me.equipePokemons = team;
+
+      };
+
+      this.constructPokemonTeam();
+
+      console.log(this.me.equipePokemons);
 
       this.getColor = function (pokemon) {
         var green = {
-          r : 85,
-          g : 255,
-          b : 85
+          r : 112,
+          g : 219,
+          b : 112
         };
         var orange = {
-          r : 200,
-          g : 100,
-          b : 50
+          r : 255,
+          g : 163,
+          b : 51
         };
         var red = {
           r : 255,
-          g : 25,
-          b : 25
+          g : 50,
+          b : 50
         };
         if (pokemon.hp / pokemon.stats[5].value > 0.5) {
           return green;
@@ -45,8 +85,6 @@
           return red;
         }
       };
-
-      console.log(this.mesPokemons[0].moves);
 
       // this.createPokemonFromAPI = function (obj) {
       //   let pokemonInstance = {

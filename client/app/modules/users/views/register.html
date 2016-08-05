@@ -5,20 +5,30 @@
         <h3>S'inscrire</h3>
       </div>
     </div>
-    <form role="form" ng-submit="register()" method="post">
+    <form name="registrationForm" novalidate role="form" ng-submit="register()" method="post">
       <div class="body bg-gray">
-        <div class="callout callout-danger" ng-if="registerError">
-          <p>{{loginError.message}}</p>
+        <div class="alert-warning text-center" ng-if="registerError">
+          {{ registerError.message }}
         </div>
         <auto:fields class="form" fields="schema" data="user" options="options"></auto:fields>
+        <div ng-messages="registrationForm.confirmPassword.$error" ng-messages-include="messages.html"></div>
         <div class="loading text-center">
           <img class="spinner" src="../images/spinner.gif">
+        </div>
+        <div id="validRegistration" class="bg-gray text-center" style='display:none;'>
+          <div>
+            <p class="col-xs-12 text-center white">Tu as été enregistré avec succès !</p>
+            <button type="button" ng-click="loginNow()" class="btn bg-light-blue col-xs-8 col-xs-offset-2" translate>Se connecter</button>
+          </div>
         </div>
       </div>
       <div class="footer">
         <div class="row">
           <button type="button" ng-click="login()" class="btn bg-light-blue col-xs-4 col-xs-offset-1" translate>Connexion</button>
           <button type="submit" class="btn bg-light-blue col-xs-4 col-xs-offset-2" translate>Valider</button>
+        </div>
+        <div class="row">
+          <p></p>
         </div>
       </div>
     </form>

@@ -13,6 +13,17 @@
           url: '/register',
           template: '<register></register>',
           controller: 'RegisterCtrl'
+        })
+        .state('app.profile', {
+          url: '/profile',
+          templateUrl: 'modules/users/views/profile.html',
+          controller: 'ProfileCtrl',
+          controllerAs : 'ctrl',
+          resolve : {
+            me: function (UserService) {
+              return UserService.me();
+            }
+          }
         });
     });
 
