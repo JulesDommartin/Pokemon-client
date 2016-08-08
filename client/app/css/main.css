@@ -164,8 +164,8 @@ div.alert-warning {
 
 
 .pokemon {
-  width: 50%;
-  height: 350px;
+/*  width: 50%;
+  height: 350px;*/
   background-color: #CCCCCC;
   border-radius: 5px;
   padding: 10px;
@@ -176,23 +176,14 @@ div.alert-warning {
 .pokemon img {
   max-width: 200px;
   max-height: 200px;
-  position: absolute;
 }
 
 .pokemon-infos {
-  width: 20%;
-  height: 75%;
-  top: 35%;
-  left: 25%;
-  position: absolute;
+  margin-top : 10px;
 }
 
 .pokemon-stats {
-  width: 60%;
-  height: 75%;
-  top : 5%;
-  left: 45%;
-  position: absolute;
+
 }
 
 .pokemon-stats .stat-label, .pokemon-stats .stat-bar {
@@ -200,17 +191,6 @@ div.alert-warning {
   padding: 0px;
 }
 
-.pokemon-moves {
-  width: 60%;
-  height: 40%;
-  top: 45%;
-  left: 40%;
-  position: absolute;
-}
-
-.pokemon-moves table {
-  margin: auto;
-}
 
 .move-stat, .pokemon-moves th {
   padding: 5px;

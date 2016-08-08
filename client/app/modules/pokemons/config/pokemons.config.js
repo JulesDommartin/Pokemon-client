@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.pokemons')
-    .run(function($rootScope) {
+    .run(function ($rootScope) {
 
       $rootScope.addMenu('Mes Pokémons','app.pokemons.list','fa-list-ul');
 

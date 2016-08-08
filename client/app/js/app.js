@@ -12,8 +12,9 @@
       'autofields',
       'cgNotify',
       'config',
-      'com.module.core',
       'com.module.entities',
+      'com.module.core',
+      'com.module.capture',
       'com.module.moves',
       'com.module.pokemons',
       'com.module.users'

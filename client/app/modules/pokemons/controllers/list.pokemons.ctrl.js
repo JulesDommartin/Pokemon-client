@@ -20,6 +20,9 @@
       this.moves = moves;
       this.me = me;
 
+      console.log(this.moves);
+      console.log(this.me);
+
       this.sortBy = function (field, reverse, primer) {
         var key = primer ?
           function(x) { return primer(x[field]); } :
@@ -77,9 +80,9 @@
           g : 50,
           b : 50
         };
-        if (pokemon.hp / pokemon.stats[5].value > 0.5) {
+        if (pokemon.hp_left / pokemon.stats[5].value > 0.5) {
           return green;
-        } else if (pokemon.hp / pokemon.stats[5].value <= 0.5 && pokemon.hp / pokemon.stats[5].value > 0.2) {
+        } else if (pokemon.hp_left / pokemon.stats[5].value <= 0.5 && pokemon.hp_left / pokemon.stats[5].value > 0.2) {
           return orange;
         } else {
           return red;

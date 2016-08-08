@@ -19,7 +19,6 @@
           controllerAs: 'ctrl',
           resolve : {
             me : function (UserService) {
-              console.log(UserService.me());
               return UserService.me();
             },
             pokemons : function (PokemonService) {

@@ -19,7 +19,7 @@
           abstract: true,
           url: '/app',
           templateUrl: 'modules/core/views/app.html',
-          controller: 'MainCtrl'
+          controller: 'MainCtrl',
         })
         .state('app.home', {
           url: '',

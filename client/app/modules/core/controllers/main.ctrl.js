@@ -21,7 +21,7 @@
           if(route1 != "register" && route1 != "reset" && route1 != "activated") {
             $state.go('login');
           }
-        })
+        });
 
       $scope.logout = function () {
       	AppAuth.logout(() => {
@@ -29,6 +29,10 @@
       	});
       };
 
+      $scope.profile = function () {
+        $state.go('app.profile');
+      }
+ 
     });
 
 })();

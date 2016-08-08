@@ -1,0 +1,7 @@
+<div class="row" ng-repeat="pokemon in ctrl.pokemons">
+	<div class="wild-pokemon col-md-12">
+		<p>{{ pokemon.name }}</p>
+		<p>{{ pokemon.level }}</p>
+		<button class="btn btn-default" ng-click="ctrl.capture(pokemon)">Capture</button>
+	</div>
+</div>
