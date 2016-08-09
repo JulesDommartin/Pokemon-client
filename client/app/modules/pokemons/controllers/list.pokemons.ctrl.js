@@ -20,6 +20,12 @@
       this.moves = moves;
       this.me = me;
 
+      for (var i = 0; i < this.pokemons.length; i++) {
+        if (!this.pokemons[i].taux_capture) {
+          console.log(this.pokemons[i].name);
+        }
+      }
+
       console.log(this.moves);
       console.log(this.me);
 
