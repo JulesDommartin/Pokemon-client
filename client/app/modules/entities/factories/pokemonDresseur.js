@@ -30,6 +30,10 @@
           "insert": {
             url: urlBase + "/pokemonsdresseur",
             method: "POST"
+          },
+          "delete": {
+            url: urlBase + "/pokemonsdresseur/:id",
+            method: "DELETE"
           }
         }
       );

@@ -1,5 +1,5 @@
 <div class="liste">
-  La liste de pokémons se trouve ici. {{ctrl.me.equipePokemons.length}} Pokémons.
+  Les Pokémons de ton équipe se trouvent ici. Tu as {{ctrl.me.equipePokemons.length}} Pokémons.
   <div class="pokemons row">
     <div class="col-md-6" ng-repeat="pokemon in ctrl.me.equipePokemons">
       <div class="pokemon col-md-11">
@@ -75,6 +75,11 @@
                 </table>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <button class="btn btn-danger" ng-click="ctrl.relacher(pokemon)">Relâcher</button>
           </div>
         </div>
       </div>

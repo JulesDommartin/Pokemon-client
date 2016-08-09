@@ -75,7 +75,7 @@
         var current_moves = [];
         for (var i = 0; i < pokemon.moves.length; i++) {
           if (level <= pokemon.moves[i].level_learned_at) {
-            for (var j = 0; j < this.getMovesAtThisLevel(pokemon).length; j++) {
+            for (var j = 0; j < this.getMovesAtThisLevel(pokemon, level).length; j++) {
               current_moves.push(this.getMovesAtThisLevel(pokemon, level)[j]);
             }
             var length = current_moves.length;
@@ -196,6 +196,12 @@
         pokemon.userId = userId;
         return PokemonDresseur.insert(pokemon).$promise;
       };
+
+      this.relacher = function (id) {
+        return PokemonDresseur.delete({
+          id: id
+        }).$promise;
+      }; 
 
     });
 

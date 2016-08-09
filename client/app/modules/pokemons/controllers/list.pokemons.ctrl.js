@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.pokemons')
-    .controller('ListPokemonsCtrl', function ($cookies, me, pokemons, moves, PokemonService, AppAuth, PokemonAuth) {
+    .controller('ListPokemonsCtrl', function ($cookies, me, pokemons, moves, PokemonService, AppAuth, PokemonAuth, DresseurService) {
 
       if ($cookies.get('current_id') === undefined) {
         this.currentId = 1;
@@ -88,6 +88,14 @@
           return red;
         }
       };
+
+      this.relacher = function (pokemon) {
+        var index = this.me.equipePokemons.indexOf(pokemon);
+        this.me.equipePokemons.splice(index, 1);
+        console.log(this.me.equipePokemons);
+        DresseurService.updateTeam(this.me.pseudo, this.me.equipePokemons);
+        PokemonService.relacher(pokemon._id);
+      }; 
 
       // this.createPokemonFromAPI = function (obj) {
       //   let pokemonInstance = {

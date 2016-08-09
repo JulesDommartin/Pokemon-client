@@ -209,3 +209,12 @@ div.alert-warning {
   height: 20px;
   border-radius: 10px;
 }
+
+
+/* CAPTURE */
+.wild-pokemon {
+  background-color: #CCCCCC;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
