@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.pokemons')
-    .controller('ListPokemonsCtrl', function ($cookies, me, pokemons, moves, PokemonService, AppAuth, PokemonAuth, DresseurService) {
+    .controller('ListPokemonsCtrl', function ($cookies, $http, me, pokemons, moves, PokemonService, AppAuth, PokemonAuth, DresseurService, GetURLService) {
 
       if ($cookies.get('current_id') === undefined) {
         this.currentId = 1;
@@ -100,8 +100,25 @@
         this.me.equipePokemons.splice(index, 1);
         console.log(this.me.equipePokemons);
         DresseurService.updateTeam(this.me.pseudo, this.me.equipePokemons);
+        console.log(pokemon._id);
         PokemonService.relacher(pokemon._id);
-      }; 
+      };
+
+
+      this.parseHtml = function (html) {
+        $('#getHtml').append(html);
+      };
+
+      // GetURLService.requestUrl('http://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_de_la_premi%C3%A8re_g%C3%A9n%C3%A9ration')
+      //   .then((res) => {
+      //     // console.log(res.documentElement.outerHTML);
+      //     this.parseHtml(res);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+
+
 
       // this.createPokemonFromAPI = function (obj) {
       //   let pokemonInstance = {

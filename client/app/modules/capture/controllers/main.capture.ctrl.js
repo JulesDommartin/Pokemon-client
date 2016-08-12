@@ -7,8 +7,8 @@
 		.controller('MainCaptureCtrl', function (pokemons, me, moves, PokemonService, DresseurService, BallService) {
 			
 			this.NB_MAX_POKEMONS = 2;
-			this.LEVEL_MIN = 2;
-			this.LEVEL_MAX = 5;
+			this.LEVEL_MIN = 80;
+			this.LEVEL_MAX = 90;
 			this.CATCHABLE_POKEMONS = [150];
 			this.allPokemons = pokemons;
 			this.moves = moves;
@@ -22,86 +22,72 @@
 
 			console.log(this.pokemons);
 
-			this.lancerPokeball = function (pokemon, pokeballType, cb) {
-				if (pokeballType == BallService.MASTERBALL) {
-					return cb(true);
+			this.getBonusStatut = function (status) {
+				if (status == "FROZEN" || status == "ASLEEP") {
+					return 2;
+				} else if (status == "PARALYZED" || status == "POISONED" || status == "BURNED") {
+					return 1.5;
 				} else {
-					var N;
-					var ball, ball_shakes;
-					if (pokeballType == BallService.POKEBALL) {
-						N = Math.floor(Math.random() * 256);
-						ball = 12;
-					} else if (pokeballType == BallService.SUPERBALL) {
-						ball = 8;
-						N = Math.floor(Math.random() * 201);
-					} else {
-						ball = 12;
-						N = Math.floor(Math.random() * 151);
-					}
-					var status_treshold;
-					var f = Math.round((pokemon.stats[5].value * 255 * 4) / (pokemon.hp_left * ball));
-					if (pokemon.status == "ASLEEP" || pokemon.status == "FROZEN") {
-						status_treshold = 25;
-					} else if (pokemon.status == "PARALYZED" || pokemon.status == "BURNED" || pokemon.status == "POISONED") {
-						status_treshold = 12;
-					} else {
-						status_treshold = 0;
-					}
-					if ((pokemon.status == "ASLEEP" || pokemon.status == "FROZEN") && N < 25) {
-						return cb(true);
-					} else if ((pokemon.status == "PARALYZED" || pokemon.status == "BURNED" || pokemon.status == "POISONED") && N < 12) {
-						return cb(true);
-					} else if (N - status_treshold > pokemon.taux_capture) {
-						return cb(false, f);
-					} else {
-						var M = Math.floor(Math.random() * 256);
-						if (f >= M ) {
-							return cb(true);
-						} else {
-							return cb(false, f);
-						}
- 					}
+					return 1;
 				}
 			};
 
-			this.getNumberOfShakes = function (pokemon, pokeballType, f) {
-				var ball;
-				if (pokeballType == BallService.POKEBALL) {
-					ball = 255;
+			this.getBonusBall = function (pokeballType) {
+				if (pokeballType == BallService.MASTERBALL) {
+					return 255;
+				} else if (pokeballType == BallService.HYPERBALL) {
+					return 2;
 				} else if (pokeballType == BallService.SUPERBALL) {
-					ball = 200;
+					return 1.5;
 				} else {
-					ball = 150;
+					return 1;
 				}
-				var d = (pokemon.taux_capture * 100) / ball;
-				if (d >= 256) {
-					return 3;
+			};
+
+			this.getFirstStepCatching = function (pokemon, bonusBall, bonusStatut) {
+				return Math.round((((3 * pokemon.stats[5].value) - (2 * pokemon.hp_left)) * pokemon.taux_capture * bonusBall * bonusStatut) / (3 * pokemon.stats[5].value));
+			};
+
+			this.getSecondStepCatching = function (a) {
+				return Math.round(65535 * Math.pow(a/255,1/4));
+			};
+
+			this.lancerPokeball = function (pokemon, pokeballType, cb) {
+				var bonusStatut;
+				if (pokemon.status) {
+					bonusStatut = this.getBonusStatut(pokemon.status);
 				} else {
-					var status_treshold;
-					if (pokemon.status == "ASLEEP" || pokemon.status == "FROZEN") {
-						status_treshold = 10;
-					} else if (pokemon.status == "PARALYZED" || pokemon.status == "BURNED" || pokemon.status == "POISONED") {
-						status_treshold = 5;
-					} else {
-						status_treshold = 0;
+					bonusStatut = 1;
+				}
+				var bonusBall = this.getBonusBall(pokeballType);
+				var a = this.getFirstStepCatching(pokemon, bonusBall, bonusStatut);
+				console.log(a);
+				if (a >= 255) {
+					return cb(true);
+				} else {
+					var b = this.getSecondStepCatching(a); 
+					var shakes = 0;
+
+					for (var i = 0; i < 4; i++) {
+						var random = Math.floor(Math.random() * 65536);
+						if (random <= b) {
+							shakes++;
+						}
 					}
-					var x = Math.round(( d * f ) / 255) + status_treshold;
-					if (x < 10) {
-						return 0;
-					} else if (x < 30) {
-						return 1;
-					} else if (x < 70) {
-						return 2;
+
+					if (shakes == 4) {
+						return cb(true);
 					} else {
-						return 3;
+						return cb(false, shakes);
 					}
+
 				}
 			};
 
 			this.capture = function (pokemon) {
 				console.log(pokemon);
 				if (this.pokemons.includes(pokemon)) {
-					this.lancerPokeball(pokemon, "Pokeball", (res, f) => {
+					this.lancerPokeball(pokemon, "Pokeball", (res, shakes) => {
 						if (res) {
 							console.log('Ce ' + pokemon.name + ' a été capturé par ' + this.me.pseudo);
 							PokemonService.capture(pokemon, this.me._id)
@@ -129,8 +115,8 @@
 									console.log('Une erreur est survenue. ');
 									console.log(err);
 								});
-						} else if (!res && f) {
-							var shakes = this.getNumberOfShakes(pokemon, "Pokeball", f);
+						} else if (!res && shakes) {
+							console.log("La ball a remué " + shakes + " fois");
 							console.log('Ce pokémon n\'a pas été capturé, réessayez');
 						} else {
 							console.log('Ce pokémon n\'a pas été capturé, réessayez');

@@ -80,6 +80,7 @@
             }
             var length = current_moves.length;
             for (var j = i - 1; j >= 0 && j >= i - (4 - length); j--) {
+              console.log(pokemon.moves[j].name);
               current_moves.push(this.getMoveId(pokemon.moves[j].name) - 1);
             }
             break;
@@ -94,8 +95,11 @@
       };
 
       this.getMoveId = function (english) {
+        console.log(english);
         for (var i = 0; i < this.moves.length; i++) {
           if (english.toUpperCase().replace("-", " ") == this.moves[i].names.en.toUpperCase().replace("-", " ")) {
+            console.log(this.moves[i]);
+            console.log(this.moves[i].id);
             return this.moves[i].id;
           }
         }
@@ -169,7 +173,8 @@
           moves : vm.getMovesFromLevel(pokemon, level),
           hp_left : stats[5].value,
           ivs : ivs,
-          evs : evs
+          evs : evs,
+          taux_capture : pokemon.taux_capture
         };
         return newPokemon;
       };
