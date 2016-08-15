@@ -7,9 +7,9 @@
 		.controller('MainCaptureCtrl', function (pokemons, me, moves, PokemonService, DresseurService, BallService) {
 			
 			this.NB_MAX_POKEMONS = 2;
-			this.LEVEL_MIN = 80;
-			this.LEVEL_MAX = 90;
-			this.CATCHABLE_POKEMONS = [150];
+			this.LEVEL_MIN = 5;
+			this.LEVEL_MAX = 10;
+			this.CATCHABLE_POKEMONS = [1,4,7];
 			this.allPokemons = pokemons;
 			this.moves = moves;
 			this.me = me;

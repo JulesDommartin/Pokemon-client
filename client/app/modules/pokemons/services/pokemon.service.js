@@ -65,7 +65,7 @@
         var moves = [];
         for (var i = 0; i < pokemon.moves.length; i++) {
           if (level == pokemon.moves[i].level_learned_at) {
-            moves.push(this.getMoveId(pokemon.moves[i].name) - 1);
+            moves.push(pokemon.moves[i].id - 1);
           }
         }
         return moves;
@@ -81,12 +81,12 @@
             var length = current_moves.length;
             for (var j = i - 1; j >= 0 && j >= i - (4 - length); j--) {
               console.log(pokemon.moves[j].name);
-              current_moves.push(this.getMoveId(pokemon.moves[j].name) - 1);
+              current_moves.push(pokemon.moves[j].id - 1);
             }
             break;
           } else if (i == pokemon.moves.length - 1) {
             for (var j = pokemon.moves.length - 1; j >= 0; j--) {
-              current_moves.push(this.getMoveId(pokemon.moves[j].name) - 1);
+              current_moves.push(pokemon.moves[j].id - 1);
             } 
             break;
           }
@@ -174,7 +174,8 @@
           hp_left : stats[5].value,
           ivs : ivs,
           evs : evs,
-          taux_capture : pokemon.taux_capture
+          taux_capture : pokemon.taux_capture,
+          curve_type : pokemon.curve_type
         };
         return newPokemon;
       };
