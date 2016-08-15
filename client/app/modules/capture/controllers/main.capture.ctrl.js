@@ -6,7 +6,7 @@
 		.module('com.module.capture')
 		.controller('MainCaptureCtrl', function (pokemons, me, moves, PokemonService, DresseurService, BallService) {
 			
-			this.NB_MAX_POKEMONS = 2;
+			this.NB_MAX_POKEMONS = 4;
 			this.LEVEL_MIN = 5;
 			this.LEVEL_MAX = 10;
 			this.CATCHABLE_POKEMONS = [1,4,7];
@@ -115,7 +115,7 @@
 									console.log('Une erreur est survenue. ');
 									console.log(err);
 								});
-						} else if (!res && shakes) {
+						} else if (!res && typeof shakes == 'number') {
 							console.log("La ball a remué " + shakes + " fois");
 							console.log('Ce pokémon n\'a pas été capturé, réessayez');
 						} else {

@@ -5,7 +5,7 @@
 	angular
 		.module('com.module.combat')
 		.run(function ($rootScope) {
-			$rootScope.addMenu("Combattre", 'app.combat.main', '');
+			$rootScope.addMenu("Combattre", 'app.combat.main', 'fa-bolt');
 		});
 
 }) ();

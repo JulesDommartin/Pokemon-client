@@ -8,7 +8,6 @@
 
       this.statsName = ["speed", "special-defense", "special-attack", "defense", "attack", "hp"];
 
-
       var vm = this;
 
       this.setPokemons = function (pokemons) {

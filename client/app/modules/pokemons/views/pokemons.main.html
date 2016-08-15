@@ -56,7 +56,7 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <img ng-if="ctrl.pokemons[pokemon.id - 1].sprites.front" ng-src="{{ ctrl.pokemons[pokemon.id - 1].sprites.front }}" alt="{{ctrl.pokemons[pokemon.id - 1].name}} [Failed]" />
+            <img ng-if="pokemon.id" ng-src="../assets/first_generation/{{ pokemon.id }}.png" alt="{{ctrl.pokemons[pokemon.id - 1].name}} [Failed]" />
           </div>
           <div class="col-md-8">
             <div class="pokemon-moves row">

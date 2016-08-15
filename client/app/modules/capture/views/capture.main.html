@@ -2,7 +2,7 @@
 	<div class="col-md-4" ng-repeat="pokemon in ctrl.pokemons">
 		<div class="wild-pokemon">
 			<div class="col-md-5">
-				<img ng-src="{{ ctrl.allPokemons[pokemon.id - 1].sprites.front }}">
+				<img ng-src="../assets/first_generation/{{ pokemon.id }}.png">
 			</div>
 			<p>{{ pokemon.name }}</p>
 			<p>Level : {{ pokemon.level }}</p>

@@ -15,7 +15,29 @@
 					url: '',
 					templateUrl: 'modules/combat/views/combat.main.html',
 					controller: 'MainCombatCtrl',
-					controllerAs: 'ctrl'
+					controllerAs: 'ctrl',
+					resolve : {
+						me : function (UserService) {
+							return UserService.me();
+						},
+						pokemons : function (PokemonService) {
+							return PokemonService.findAll();
+						}
+					}
+				})
+				.state('app.combat.battle', {
+					url: '/battle',
+					templateUrl: 'modules/combat/views/combat.battle.html',
+					controller: 'BattleCombatCtrl',
+					controllerAs: 'ctrl',
+					resolve : {
+						me : function (UserService) {
+							return UserService.me();
+						}
+					},
+					params: {
+						pokemon: null
+					}
 				});
 		});
 
