@@ -16,6 +16,7 @@
       'com.module.core',
       'com.module.capture',
       'com.module.combat',
+      'com.module.game',
       'com.module.moves',
       'com.module.pokemons',
       'com.module.users'
