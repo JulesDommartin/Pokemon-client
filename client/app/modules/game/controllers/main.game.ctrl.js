@@ -4,7 +4,7 @@
 
   angular
     .module('com.module.game')
-    .controller('MainGameCtrl', function (me, $state, $scope, $rootScope) {
+    .controller('MainGameCtrl', function (me, $state, $scope, $rootScope, hotkeys) {
       console.log('On y est');
       console.log(me);
       this.me = me;
@@ -21,23 +21,66 @@
 
       var vm = this;
 
-      // load the texture we need
-      PIXI.loader.add('bulbizarre', 'assets/first_generation/1.png').load(function (loader, resources) {
+      hotkeys.bindTo($scope)
+          .add({
+            combo: 'z',
+            description: 'moving up',
+            callback: function() {
+              vm.map.position.y += 32;
+            }
+          })
+          .add({
+              combo: 'q',
+              description: 'moving left',
+              callback: function () {
+                vm.map.position.x += 32;
+              }
+          })
+          .add({
+            combo: 'd',
+            description: 'moving right',
+            callback: function () {
+                vm.map.position.x -= 32;
+            }
+          })
+          .add({
+            combo: 's',
+            description: 'moving down',
+            callback: function () {
+              vm.map.position.y -= 32;
+            }
+          });
+
+      PIXI.loader.add('map', 'assets/maps/map.png').load(function (loader, resources) {
           // This creates a texture from a 'bunny.png' image.
-          vm.bulbizarre = new PIXI.Sprite(resources.bulbizarre.texture);
+          vm.map = new PIXI.Sprite(resources.map.texture);
 
           // Setup the position and scale of the bunny
-          vm.bulbizarre.position.x = 400;
-          vm.bulbizarre.position.y = 300;
+          vm.map.position.x = 0;
+          vm.map.position.y = 0;
 
-          vm.bulbizarre.scale.x = 2;
-          vm.bulbizarre.scale.y = 2;
+          vm.map.scale.x = 2;
+          vm.map.scale.y = 2;
 
           // Add the bunny to the scene we are building.
-          stage.addChild(vm.bulbizarre);
+          stage.addChild(vm.map);
 
           // kick off the animation loop (defined below)
           animate();
+      });
+
+      // load the texture we need
+
+      PIXI.loader.add('bulbizarre', 'assets/first_generation/3.png').load(function (loader, resources) {
+
+        vm.bulbizarre = new PIXI.Sprite(resources.bulbizarre.texture);
+        vm.bulbizarre.position.x = 14 * 16;
+        vm.bulbizarre.position.y = 13 * 16;
+        vm.bulbizarre.scale.x = 0.5;
+        vm.bulbizarre.scale.y = 0.5;
+
+        stage.addChild(vm.bulbizarre);
+
       });
 
       function animate() {

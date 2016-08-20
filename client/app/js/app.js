@@ -12,6 +12,7 @@
       'autofields',
       'cgNotify',
       'config',
+      'cfp.hotkeys',
       'com.module.entities',
       'com.module.core',
       'com.module.capture',
