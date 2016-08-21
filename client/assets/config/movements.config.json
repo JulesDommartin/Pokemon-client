@@ -1,0 +1,18 @@
+{
+  "movements": {
+    "move_down": [
+      "sprite_move_down_walkin_2",
+      "sprite_move_down_walkin_1",
+      "sprite_move_down_walkin_2",
+      "sprite_move_down_walkin_3",
+      "sprite_move_down_walkin_2"
+    ],
+    "move_up": [
+      "sprite_move_up_walkin_2",
+      "sprite_move_up_walkin_1",
+      "sprite_move_up_walkin_2",
+      "sprite_move_up_walkin_3",
+      "sprite_move_up_walkin_2"
+    ]
+  }
+}

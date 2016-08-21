@@ -94,7 +94,7 @@ div.alert-warning {
 .content {
   background: #AAA;
   padding: 20px;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 

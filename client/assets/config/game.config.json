@@ -1,0 +1,27 @@
+{
+  "hotkeys": {
+    "moving_keys": {
+        "move_up": {
+          "description": "Moving up",
+          "key": "z"
+        },
+        "move_down": {
+          "description": "Moving down",
+          "key": "s"
+        },
+        "move_left": {
+          "description": "Moving left",
+          "key": "q"
+        },
+        "move_right": {
+          "description": "Moving right",
+          "key": "d"
+        }
+      }
+  },
+  "spritesheets": {
+    "main_caracter": {
+      "url": "assets/images/caracters/spritesdresseursdiamantperle.png"
+    }
+  }
+}

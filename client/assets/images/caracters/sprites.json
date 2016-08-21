@@ -1,0 +1,50 @@
+{
+  "frames": {
+    "sprite_move_up_walkin_1": {
+      "frame": {"x":6, "y":61, "w":17, "h":25},
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {"x":6, "y":61, "w":17, "h":25},
+      "sourceSize": {"w": 17, "h": 25}
+    },
+    "sprite_move_up_walkin_2": {
+      "frame": {"x":27, "y":59, "w":17, "h":25},
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {"x":27, "y":59, "w":17, "h":25},
+      "sourceSize": {"w": 17, "h": 25}
+    },
+    "sprite_move_up_walkin_3": {
+      "frame": {"x":49, "y":61, "w":17, "h":25},
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {"x":49, "y":61, "w":17, "h":25},
+      "sourceSize": {"w": 17, "h": 25}
+    },
+    "sprite_move_down_walkin_1": {
+      "frame": {"x":7, "y":5, "w":17, "h":25},
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {"x":7, "y":5, "w":17, "h":25},
+      "sourceSize": {"w": 17, "h": 25}
+    },
+    "sprite_move_down_walkin_2": {
+      "frame": {"x":26, "y":5, "w":17, "h":25},
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {"x":25, "y":5, "w":17, "h":25},
+      "sourceSize": {"w": 17, "h": 25}
+    },
+    "sprite_move_down_walkin_3": {
+      "frame": {"x":45, "y":5, "w":17, "h":25},
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {"x":43, "y":5, "w":17, "h":25},
+      "sourceSize": {"w": 17, "h": 25}
+    }
+  },
+
+  "meta": {
+    "image": "./spritesdresseursdiamantperle.png"
+  }
+}

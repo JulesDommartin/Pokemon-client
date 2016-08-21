@@ -4,95 +4,38 @@
 
   angular
     .module('com.module.game')
-    .controller('MainGameCtrl', function (me, $state, $scope, $rootScope, hotkeys) {
-      console.log('On y est');
-      console.log(me);
+    .controller('MainGameCtrl', function (me, $state, $scope, $rootScope, MainGameService) {
+
       this.me = me;
 
       var renderer = new PIXI.WebGLRenderer(800,600);
 
-      console.log(renderer);
-
       $('.game-container').append(renderer.view);
-
-
-      // You need to create a root container that will hold the scene you want to draw.
-      var stage = new PIXI.Container();
 
       var vm = this;
 
-      hotkeys.bindTo($scope)
-          .add({
-            combo: 'z',
-            description: 'moving up',
-            callback: function() {
-              vm.map.position.y += 32;
-            }
-          })
-          .add({
-              combo: 'q',
-              description: 'moving left',
-              callback: function () {
-                vm.map.position.x += 32;
-              }
-          })
-          .add({
-            combo: 'd',
-            description: 'moving right',
-            callback: function () {
-                vm.map.position.x -= 32;
-            }
-          })
-          .add({
-            combo: 's',
-            description: 'moving down',
-            callback: function () {
-              vm.map.position.y -= 32;
-            }
-          });
+      MainGameService.init($scope, this);
 
-      PIXI.loader.add('map', 'assets/maps/map.png').load(function (loader, resources) {
-          // This creates a texture from a 'bunny.png' image.
-          vm.map = new PIXI.Sprite(resources.map.texture);
+      this.animate = function () {
 
-          // Setup the position and scale of the bunny
-          vm.map.position.x = 0;
-          vm.map.position.y = 0;
+          requestAnimationFrame(vm.animate);
 
-          vm.map.scale.x = 2;
-          vm.map.scale.y = 2;
+          renderer.render(MainGameService.getStage());
+      };
 
-          // Add the bunny to the scene we are building.
-          stage.addChild(vm.map);
+      this.animate();
 
-          // kick off the animation loop (defined below)
-          animate();
-      });
+      this.updateStage = function (stage) {
+        MainGameService.stage = stage;
+      };
 
-      // load the texture we need
+      this.addStageChild = function (child) {
+        MainGameService.stage.addChild(child);
+      };
 
-      PIXI.loader.add('bulbizarre', 'assets/first_generation/3.png').load(function (loader, resources) {
-
-        vm.bulbizarre = new PIXI.Sprite(resources.bulbizarre.texture);
-        vm.bulbizarre.position.x = 14 * 16;
-        vm.bulbizarre.position.y = 13 * 16;
-        vm.bulbizarre.scale.x = 0.5;
-        vm.bulbizarre.scale.y = 0.5;
-
-        stage.addChild(vm.bulbizarre);
-
-      });
-
-      function animate() {
-          // start the timer for the next animation loop
-          requestAnimationFrame(animate);
-
-          // each frame we spin the bunny around a bit
-          // vm.bulbizarre.position.x++;
-
-          // this is the main render call that makes pixi draw your container and its children.
-          renderer.render(stage);
-      }
+      this.removeStageChild = function (child) {
+        MainGameService.stage.removeChild(child);
+      };
 
     });
 

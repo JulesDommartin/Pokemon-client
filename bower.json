@@ -49,5 +49,8 @@
         "jquery-ui.min.js"
       ]
     }
+  },
+  "resolutions": {
+    "angular": "1.5.8"
   }
 }
