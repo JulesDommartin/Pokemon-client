@@ -37,7 +37,7 @@
                 callback: () => {
                   if (!AnimationsGameService.is_moving) {
                     this.controller.removeStageChild(AnimationsGameService.animation);
-                    AnimationsGameService.move_up(vm.map, vm.sprite);
+                    AnimationsGameService.move('up', vm.map, 0, 1);
                     this.controller.addStageChild(AnimationsGameService.animation);
                   } else {
                     console.log("Alreay moving");
@@ -49,7 +49,9 @@
                   description: keys.move_left.description,
                   callback: () => {
                     if (!AnimationsGameService.is_moving) {
-                      AnimationsGameService.move_left(vm.map, vm.sprite);
+                      this.controller.removeStageChild(AnimationsGameService.animation);
+                      AnimationsGameService.move('left', vm.map, 1, 0);
+                      this.controller.addStageChild(AnimationsGameService.animation);
                     } else {
                       console.log("Alreay moving");
                     }
@@ -60,7 +62,9 @@
                 description: keys.move_right.description,
                 callback: () => {
                   if (!AnimationsGameService.is_moving) {
-                    AnimationsGameService.move_right(vm.map, vm.sprite);
+                    this.controller.removeStageChild(AnimationsGameService.animation);
+                    AnimationsGameService.move('right', vm.map, -1, 0);
+                    this.controller.addStageChild(AnimationsGameService.animation);
                   } else {
                     console.log("Alreay moving");
                   }
@@ -72,7 +76,7 @@
                 callback: () => {
                   if (!AnimationsGameService.is_moving) {
                     this.controller.removeStageChild(AnimationsGameService.animation);
-                    AnimationsGameService.move_down(vm.map, vm.sprite);
+                    AnimationsGameService.move('down', vm.map, 0, -1);
                     this.controller.addStageChild(AnimationsGameService.animation);
                   } else {
                     console.log("Alreay moving");

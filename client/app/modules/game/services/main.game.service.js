@@ -56,7 +56,7 @@
 
         this.initMap("map1", 0, 0);
         HotkeysGameService.init(this.current_map, this.scope, this.controller);
-        HotkeysGameService.getAnimationsService().setAnimation('move_up');
+        HotkeysGameService.getAnimationsService().setAnimation('up');
         this.stage.addChild(HotkeysGameService.getAnimationsService().animation);
         console.log(this.stage);
       };

@@ -26,24 +26,24 @@
         }
         this.animation = new PIXI.extras.MovieClip(frames);
         this.animation.position.x = 12 * 32;
-        this.animation.position.y = 9 * 32;
+        this.animation.position.y = 9 * 32 + 16;
         this.animation.scale.x = 2;
         this.animation.scale.y = 2;
-        this.animation.animationSpeed = 0.1;
+        this.animation.animationSpeed = 0.3;
       };
 
       this.setAnimation = function (string) {
         switch (string) {
-          case "move_up":
+          case "up":
             this.initAnimation(this.movements_config.move_up);
             break;
-          case "move_left":
-
+          case "left":
+            this.initAnimation(this.movements_config.move_left);
           break;
-          case "move_right":
-
+          case "right":
+            this.initAnimation(this.movements_config.move_right);
             break;
-          case "move_down":
+          case "down":
             this.initAnimation(this.movements_config.move_down);
             break;
           default:
@@ -51,37 +51,26 @@
         }
       };
 
-      this.move_up = function (map, sprite) {
-        this.setAnimation('move_up');
+      this.move = function (direction, map, deltaX, deltaY) {
+        this.setAnimation(direction);
         this.animation.play();
-        this.move_map(map, 0, -1);
-      };
-
-      this.move_left = function (map, sprite) {
-        map.position.x += 32;
-      };
-
-      this.move_right = function (map, sprite) {
-        map.position.x -= 32;
-      };
-
-      this.move_down = function (map, sprite) {
-        this.setAnimation('move_down');
-        this.animation.play();
-
-        // if (this.movement <= 32) {
-        //   this.is_moving = true;
-        //   map.position.y -= 1;
-        //   this.movement ++;
-        // } else {
-        //   this.movement = 0;
-        //   this.is_moving = false;
-        // }
+        this.current_moving_index = 0;
+        this.is_moving = true;
+        this.move_map(map, deltaX, deltaY);
       };
 
       this.move_map = function (map, deltaX, deltaY) {
-        if (deltaY == -1) {
-          
+        if (this.current_moving_index < 16) {
+          map.position.x += deltaX * 2;
+          map.position.y += deltaY * 2;
+          this.current_moving_index++;
+          setTimeout(() => {
+            this.move_map(map, deltaX, deltaY);
+          }, 10);
+        } else {
+          this.current_moving_index = 0;
+          this.is_moving = false;
+          this.animation.gotoAndStop(0);
         }
       };
 
